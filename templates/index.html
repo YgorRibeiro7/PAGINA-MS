@@ -1,0 +1,59 @@
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="shortcut icon" href="http://127.0.0.1:5000/static/img/favicon.ico" type="image/x-icon">
+    <title>Login Page</title>
+</head>
+<body>
+   
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form action="/cadastrar" method="POST">
+                <h1>Criar uma conta</h1>
+    
+               
+                <input type="text" name="nome" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="senha" placeholder="Password" required>
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form action="/login" method="POST">
+                <img class='imgIndex' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREAmOrmSCSoqnl6rV_4OCFEoAYJeyYsmRKqg&s" alt="logo">
+                <br>
+                <h1>Painel Gerencial MS</h1>
+                <div class="social-icons">
+                    <!-- Ícones sociais -->
+                </div>
+                
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="senha" placeholder="Password" required>
+                
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Bem-vindo de volta!</h1>
+                    <p>Insira seus dados pessoais</p>
+                    <button class="hidden" id="login">Entrar</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Opa, Seja-Bem Vindo! </h1>
+                    <p>
+                        Cadastre-se com seus dados pessoais para acessar os Dashboard</p>
+                    <button class="hidden" id="register">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/script.js"></script>
+</body>
+</html>

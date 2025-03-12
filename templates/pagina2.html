@@ -1,0 +1,102 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel MS</title>
+    <link rel="stylesheet" href="/static/style2.css">
+    <link rel="shortcut icon" href="http://127.0.0.1:5000/static/img/favicon.ico" type="image/x-icon">
+
+</head>
+<header class="header">
+    <div class="logo">MS CONNECT</div>
+    
+   <!-- <button class="mobile-toggle">☰</button>-->
+    
+    <!-- <ul class="nav-menu">
+       <li class="nav-item"><a href="#">Cursinho Enem</a></li>
+        <li class="nav-item"><a href="#">Cursinho Medicina</a></li>
+        <li class="nav-item"><a href="#" class="active">Graduação</a></li>
+        <li class="nav-item"><a href="#">Bolsa social</a></li>
+        <li class="nav-item"><a href="#">Pós</a></li>
+        <li class="nav-item"><a href="#">Para empresas</a></li>
+        <li class="nav-item"><a href="#">Teste Vocacional</a></li>
+    </ul>-->
+    
+    <div class="right-section">
+        <button class="theme-toggle" id="theme-toggle">Modo Claro</button>
+    </div>
+    <a href="{{ url_for('logout') }}" class="btn-sair">Sair</a>
+</header>
+<body>
+  
+    <div class="container">
+        <h1>Painel Gerencial</h1>
+        
+        <div class="products">
+            <!-- Produto 1 -->
+            <div class="product-card">
+                <a href="https://app.powerbi.com/links/osRl9FX75y?ctid=887b0d95-6889-4d3f-a864-85fae8769d49&pbi_source=linkShare" class="product-link">
+                    <div class="product-image">
+                         <img src="https://www.falemaisvoip.com.br/blog/wp-content/uploads/2020/03/blog-1.png" alt="Shorts Jordan Dri-FIT Sport Masculino"> 
+                   
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Dashboard ligações 3C </h3>
+                        <!-- <p class="product-price">R$ 349,99</p> -->
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Produto 2 -->
+            <div class="product-card">
+                <a href="https://www.nike.com.br/tenis-air-force" class="product-link">
+                    <div class="product-image">
+                        <img src="https://www.falemaisvoip.com.br/blog/wp-content/uploads/2022/10/monitoramento-de-chamadas.jpg" alt="Tênis Nike Air Force 1 '07 Masculino"> 
+                      
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Dashboard Chamadas Vai da Vendas </h3>
+                        <!-- <p class="product-price">R$ 799,99</p> -->
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Produto 3 -->
+            <div class="product-card">
+                <a href="" class="product-link">
+                    <div class="product-image">
+                         <img src="https://zendar.com.br/wp-content/uploads/2022/11/Destaque-01-3.png" alt="Shorts Nike Club Flow Masculino">
+                
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name"> Dashboard Financeiro  </h3>
+                        <!-- <p class="product-price">R$ 299,99</p> -->
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const body = document.body;
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                toggleButton.textContent = 'Modo Claro';
+            } else {
+                toggleButton.textContent = 'Modo Escuro';
+            }
+        });
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
+
+
+</body>
+</html>

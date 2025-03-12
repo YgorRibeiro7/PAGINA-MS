@@ -1,0 +1,246 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --highlight-color: #00c86f;
+}
+
+body {
+    background-color: #e7e1e1;
+    transition: background-color 1s, color 1s;
+    color: #333;
+}
+
+
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #463f3f;
+    margin-top: 100px; /* Adiciona espaço para o header fixo */
+}
+
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.product-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 300px;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+
+.product-info {
+    padding: 15px;
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+
+.product-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .products {
+        gap: 15px;
+    }
+    
+    .product-card {
+        width: calc(50% - 15px);
+    }
+}
+
+@media (max-width: 480px) {
+    .product-card {
+        width: 100%;
+    }
+}
+
+.btn-dashboard2 {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-dashboard2:hover {
+    background-color: #0056b3;
+    color: white;
+    
+}
+
+h1{
+    margin-top: 100px;
+}
+
+
+.btn-dashboard2:hover {
+    background-color: white;
+    color: black;
+}
+
+
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    height: 80px;
+    background-color: black;
+    width: 100%; /* Ocupa 100% da largura */
+    box-sizing: border-box; /* Inclui o padding na largura total */
+    position: fixed; /* Fixa o header no topo */
+    top: 0; /* Alinha o header no topo */
+    left: 0; /* Alinha o header à esquerda */
+    z-index: 1000; /* Garante que o header fique acima de outros elementos */
+  
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* .nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+} */
+
+/* .nav-item {
+    padding: 0 10px;
+    cursor: pointer;
+} */
+/* 
+.nav-item a {
+    color: var(--text-color);
+    text-decoration: none;
+} */
+
+.active {
+    color: var(--highlight-color) !important;
+}
+
+.theme-toggle {
+    background-color: transparent;
+    border: 2px solid var(--highlight-color);
+    color: var(--highlight-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 885px;
+    font-size: 14px;
+}
+
+.theme-toggle:hover {
+    background-color: var(--highlight-color);
+    color: var(--bg-color);
+}
+
+
+@media (max-width: 950px) {
+    .mobile-toggle {
+        display: block;
+    }
+    
+    .nav-menu {
+        position: absolute;
+        flex-direction: column;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-color);
+        padding: 20px;
+        gap: 15px;
+        transform: translateY(-150%);
+        transition: transform 0.3s;
+        z-index: 100;
+    }
+    
+    .nav-menu.active {
+        transform: translateY(0);
+    }
+    
+    .right-section {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.btn-sair {
+    color: white; /* Cor do texto */
+    text-decoration: none; /* Remove sublinhado do link */
+    font-size: 16px; /* Tamanho da fonte */
+    padding: 8px 16px; /* Espaçamento interno */
+    border: 1px solid white; /* Borda branca */
+    border-radius: 4px; /* Bordas arredondadas */
+    margin-left: 10px; /* Espaçamento à esquerda */
+    background-color: transparent; /* Fundo transparente */
+    cursor: pointer; /* Cursor de ponteiro */
+}
+
+.btn-sair:hover {
+    background-color: white; /* Cor de fundo ao passar o mouse */
+    color: black; /* Cor do texto ao passar o mouse */
+}
+.container{
+    margin-top: 12%;
+    
+}
