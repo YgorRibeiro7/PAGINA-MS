@@ -1,5 +1,6 @@
 from flask import Flask, request, redirect, url_for, render_template, session
 import psycopg2
+import os
 
 app = Flask(__name__)
 app.secret_key = 'sua_chave_secreta_aqui'
@@ -84,4 +85,6 @@ def logout():
     # Redireciona para a página inicial
     return redirect(url_for('index'))
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Usa a porta do Render ou 5000 como fallback
+    app.run(host='0.0.0.0', port=port)
+    # app.run(debug=True)
