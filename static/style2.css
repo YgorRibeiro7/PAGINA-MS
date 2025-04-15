@@ -9,7 +9,7 @@
 :root {
     --bg-color: #1a1a1a;
     --text-color: #ffffff;
-    --highlight-color: #00c86f;
+    --highlight-color: #7358b3;
 }
 
 body {
@@ -76,6 +76,7 @@ h1 {
     font-weight: 600;
     color: #333;
     margin-bottom: 8px;
+    text-decoration: none;
 }
 
 
@@ -187,11 +188,14 @@ body.dark-mode {
     cursor: pointer;
     margin-left: 885px;
     font-size: 14px;
+    color: #fff;
+ 
 }
 
 .theme-toggle:hover {
     background-color: var(--highlight-color);
     color: var(--bg-color);
+    color: #fff;
 }
 
 
