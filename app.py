@@ -51,11 +51,37 @@ def cadastrar():
 
     return redirect(url_for('index'))
 
+# @app.route('/login', methods=['POST'])
+# def login():
+#     email = request.form['email']
+#     senha = request.form['senha']
+
+#     conn = get_db_connection()
+#     cur = conn.cursor()
+#     cur.execute(
+#         'SELECT * FROM usuarios WHERE email = %s AND senha = %s',
+#         (email, senha)
+#     )
+#     usuario = cur.fetchone()
+#     cur.close()
+#     conn.close()
+
+    # if usuario:
+    #     nome_usuario = usuario[1]  # Use o valor diretamente
+    #     session['usuario'] = nome_usuario
+    #     return redirect(url_for('pagina2'))
+    # else:
+    #   return 'Login falhou. Verifique suas credenciais.'
+
+
+
+
+
 @app.route('/login', methods=['POST'])
 def login():
     email = request.form['email']
     senha = request.form['senha']
-
+    
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute(
@@ -65,13 +91,22 @@ def login():
     usuario = cur.fetchone()
     cur.close()
     conn.close()
-
+    
+    
     if usuario:
         nome_usuario = usuario[1]  # Use o valor diretamente
         session['usuario'] = nome_usuario
-        return redirect(url_for('pagina2'))
+        return redirect(url_for('painel'))
     else:
-      return 'Login falhou. Verifique suas credenciais.'
+        return 'Login inválido'
+
+
+
+@app.route('/painel')
+def painel():
+    nome_usuario = session.get('usuario')  # Corrigido aqui
+    return render_template('painel.html', nome_usuario=nome_usuario)
+
 
 @app.route('/pagina2')
 def pagina2():

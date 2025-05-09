@@ -10,6 +10,15 @@
 <header class="header">
     <div class="logo">MS CONNECT</div>
     
+    <span class="bem-vindo">
+        {% if nome_usuario %}
+            Olá, {{ nome_usuario }}!
+        {% else %}
+            Olá, visitante!
+        {% endif %}
+    </span>
+    
+    
    <!-- <button class="mobile-toggle">☰</button>-->
     
     <!-- <ul class="nav-menu">

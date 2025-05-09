@@ -249,3 +249,9 @@ body.dark-mode {
     
 }
 
+/* Exibição do nome do usuário na pagina2html */
+.bem-vindo {
+    margin-left: 25px;
+    font-weight: bold;
+    color: #ffffff;
+}
