@@ -623,17 +623,17 @@
     </a>
 
     <div class="menu-section-title">Dashboards</div>
-    <a class="menu-item" onclick="loadContent(event,'ligacoes')">
-        <div class="mi-icon">📞</div>
-        <span>Ligações 3C</span>
+    <a class="menu-item" onclick="loadContent(event,'covid19')">
+        <div class="mi-icon">🦠</div>
+        <span>Covid 19</span>
     </a>
-    <a class="menu-item" onclick="loadContent(event,'msgestor')">
+    <a class="menu-item" onclick="loadContent(event,'financeiro')">
         <div class="mi-icon">📊</div>
-        <span>Ms Gestor</span>
+        <span>Financeiro</span>
     </a>
-    <a class="menu-item" onclick="loadContent(event,'lojasmsconnect')">
-        <div class="mi-icon">💼</div>
-        <span>Lojas MS Connect</span>
+    <a class="menu-item" onclick="loadContent(event,'analise')">
+        <div class="mi-icon">📈</div>
+        <span>Análise</span>
     </a>
 
     <div class="menu-section-title">Outros</div>
@@ -860,9 +860,9 @@
     </div>
 
     <!-- Power BI Frames -->
-    <iframe id="frame-ligacoes" class="powerbi-frame" allowfullscreen></iframe>
-    <iframe id="frame-msgestor" class="powerbi-frame" allowfullscreen></iframe>
-    <iframe id="frame-lojasmsconnect" class="powerbi-frame" allowfullscreen></iframe>
+    <iframe id="frame-covid19" class="powerbi-frame" allowfullscreen></iframe>
+    <iframe id="frame-financeiro" class="powerbi-frame" allowfullscreen></iframe>
+    <iframe id="frame-analise" class="powerbi-frame" allowfullscreen></iframe>
 
     <!-- Outras páginas -->
     <div class="dashboard-container" id="dashboard-relatorios">
@@ -879,11 +879,16 @@
 
 <script>
     const embedUrls = {
-        'ligacoes':       'https://app.powerbi.com/view?r=eyJrIjoiMTgzMWVkYzEtNzUwMi00YmEwLTgyZmYtMzMwMzQzZTRiZDlhIiwidCI6Ijg4N2IwZDk1LTY4ODktNGQzZi1hODY0LTg1ZmFlODc2OWQ0OSJ9',
-        'msgestor':       'https://app.powerbi.com/view?r=eyJrIjoiYTU5MmIyMDYtMjhkOC00YmU0LTlmZGItY2Y3YTdmMzdjMTVmIiwidCI6Ijg4N2IwZDk1LTY4ODktNGQzZi1hODY0LTg1ZmFlODc2OWQ0OSJ9',
-        'lojasmsconnect': 'https://app.powerbi.com/view?r=eyJrIjoiMzNiYjIxNDgtYWM3OC00ODM4LWEyNDAtY2Q4ZTZlYjBhN2MzIiwidCI6Ijg4N2IwZDk1LTY4ODktNGQzZi1hODY0LTg1ZmFlODc2OWQ0OSJ9'
+        'covid19':       'https://app.powerbi.com/view?r=eyJrIjoiNWQxMDg5ZmEtZDFhNy00ODM5LTkzODQtMjM3YTAxNTM3YjNkIiwidCI6Ijg4N2IwZDk1LTY4ODktNGQzZi1hODY0LTg1ZmFlODc2OWQ0OSJ9',
+        'financeiro':       'https://app.powerbi.com/view?r=eyJrIjoiNmMwZWNlYmMtMmU2Zi00M2NlLWE4YzYtMDFiMjdlN2E3ODgyIiwidCI6Ijg4N2IwZDk1LTY4ODktNGQzZi1hODY0LTg1ZmFlODc2OWQ0OSJ9',
+        'analise': 'https://app.powerbi.com/view?r=eyJrIjoiMzdlODMxYzYtZjE4NS00M2ZjLWE0YTUtNDM0NGU0NTg3ZDM1IiwidCI6Ijg4N2IwZDk1LTY4ODktNGQzZi1hODY0LTg1ZmFlODc2OWQ0OSJ9'
     };
-
+//    ligacoes
+//    msgestor
+//    lojasmsconnect
+   
+//    https://app.powerbi.com/view?r=eyJrIjoiMzdlODMxYzYtZjE4NS00M2ZjLWE0YTUtNDM0NGU0NTg3ZDM1IiwidCI6Ijg4N2IwZDk1LTY4ODktNGQzZi1hODY0LTg1ZmFlODc2OWQ0OSJ9
+    
     /* ── THEME ── */
     const themeBtn = document.getElementById('theme-toggle');
     const body = document.body;
