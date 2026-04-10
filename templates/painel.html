@@ -623,18 +623,18 @@
     </a>
 
     <div class="menu-section-title">Dashboards</div>
-    <a class="menu-item" onclick="loadContent(event,'covid19')">
-        <div class="mi-icon">🦠</div>
-        <span>Covid 19</span>
+    <a class="menu-item" onclick="loadContent(event,'lojas')">
+        <div class="mi-icon">💼</div>
+        <span>Lojas </span>
     </a>
-    <a class="menu-item" onclick="loadContent(event,'financeiro')">
+    <!-- <a class="menu-item" onclick="loadContent(event,'financeiro')">
         <div class="mi-icon">📊</div>
         <span>Financeiro</span>
-    </a>
-    <a class="menu-item" onclick="loadContent(event,'analise')">
+    </a> -->
+    <!-- <a class="menu-item" onclick="loadContent(event,'analise')">
         <div class="mi-icon">📈</div>
         <span>Análise</span>
-    </a>
+    </a> -->
 
     <div class="menu-section-title">Outros</div>
     <a class="menu-item" onclick="loadContent(event,'relatorios')">
@@ -860,7 +860,7 @@
     </div>
 
     <!-- Power BI Frames -->
-    <iframe id="frame-covid19" class="powerbi-frame" allowfullscreen></iframe>
+    <iframe id="frame-lojas" class="powerbi-frame" allowfullscreen></iframe>
     <iframe id="frame-financeiro" class="powerbi-frame" allowfullscreen></iframe>
     <iframe id="frame-analise" class="powerbi-frame" allowfullscreen></iframe>
 
@@ -879,7 +879,7 @@
 
 <script>
     const embedUrls = {
-        'covid19':       'https://app.powerbi.com/view?r=eyJrIjoiNWQxMDg5ZmEtZDFhNy00ODM5LTkzODQtMjM3YTAxNTM3YjNkIiwidCI6Ijg4N2IwZDk1LTY4ODktNGQzZi1hODY0LTg1ZmFlODc2OWQ0OSJ9',
+        'lojas':       'https://app.powerbi.com/view?r=eyJrIjoiMzNiYjIxNDgtYWM3OC00ODM4LWEyNDAtY2Q4ZTZlYjBhN2MzIiwidCI6Ijg4N2IwZDk1LTY4ODktNGQzZi1hODY0LTg1ZmFlODc2OWQ0OSJ9',
         'financeiro':       'https://app.powerbi.com/view?r=eyJrIjoiNmMwZWNlYmMtMmU2Zi00M2NlLWE4YzYtMDFiMjdlN2E3ODgyIiwidCI6Ijg4N2IwZDk1LTY4ODktNGQzZi1hODY0LTg1ZmFlODc2OWQ0OSJ9',
         'analise': 'https://app.powerbi.com/view?r=eyJrIjoiMzdlODMxYzYtZjE4NS00M2ZjLWE0YTUtNDM0NGU0NTg3ZDM1IiwidCI6Ijg4N2IwZDk1LTY4ODktNGQzZi1hODY0LTg1ZmFlODc2OWQ0OSJ9'
     };
