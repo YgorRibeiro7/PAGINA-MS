@@ -623,33 +623,43 @@
     }
 
     /* ── OPEN DASHBOARD (from card click) ── */
-    function openDashboard(key) {
+    async function openDashboard(key) {
+    try {
+        const response = await fetch(`/validar-dashboard/${key}`);
+        const data = await response.json();
+
+        if (!data.permitido) {
+            alert(data.mensagem);
+            return;
+        }
+
         hideAll();
 
-        // Show loading first
         document.getElementById('loading').classList.add('active');
 
-        // Show dashboard container
         const pDash = document.getElementById('page-dashboard');
         pDash.style.display = 'flex';
         pDash.classList.add('active');
 
-        // Set title and badge
         const meta = META[key];
         document.getElementById('dash-title').textContent = meta.title;
+
         const badge = document.getElementById('dash-badge');
         badge.textContent = meta.badgeText;
         badge.className = 'dash-topbar-badge ' + meta.badgeClass;
 
-        // Load iframe
         const iframe = document.getElementById('dash-iframe');
         iframe.src = URLS[key];
 
-        // Hide loading after timeout (PBI iframes don't fire onload reliably)
         setTimeout(() => {
             document.getElementById('loading').classList.remove('active');
         }, 3000);
+
+    } catch (error) {
+        alert("Erro ao validar acesso.");
+        console.error(error);
     }
+}
 
     /* ── STATIC PAGES ── */
     function loadStaticPage(event, pageId) {
