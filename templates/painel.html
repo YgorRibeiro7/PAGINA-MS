@@ -51,12 +51,9 @@
         .header {
             background: var(--header-bg);
             height: 60px;
-            display: flex;
-            align-items: center;
-            padding: 0 22px;
-            gap: 14px;
-            position: fixed;
-            top: 0; left: 0; right: 0;
+            display: flex; align-items: center;
+            padding: 0 22px; gap: 14px;
+            position: fixed; top: 0; left: 0; right: 0;
             z-index: 1000;
             box-shadow: 0 1px 0 rgba(255,255,255,0.06), 0 4px 20px rgba(0,0,0,0.3);
         }
@@ -68,7 +65,8 @@
         }
         .menu-toggle:hover { background: rgba(255,255,255,0.08); }
         .menu-toggle span {
-            width: 20px; height: 2px; background: rgba(255,255,255,0.85);
+            width: 20px; height: 2px;
+            background: rgba(255,255,255,0.85);
             border-radius: 2px; display: block;
         }
 
@@ -84,11 +82,35 @@
         }
         .logo-text {
             font-family: 'Sora', sans-serif;
-            font-size: 16px; font-weight: 700; color: #fff;
-            letter-spacing: 0.4px;
+            font-size: 16px; font-weight: 700; color: #fff; letter-spacing: 0.4px;
         }
 
         .header-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+
+        /* TIMER DE SESSÃO NO HEADER */
+        .session-timer {
+            display: flex; align-items: center; gap: 6px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.12);
+            padding: 5px 11px; border-radius: 8px;
+            font-size: 12px; color: rgba(255,255,255,0.7);
+            transition: all 0.3s;
+        }
+        .session-timer.warning {
+            background: rgba(245,158,11,0.15);
+            border-color: rgba(245,158,11,0.4);
+            color: #fbbf24;
+            animation: pulse-warning 1s ease-in-out infinite;
+        }
+        @keyframes pulse-warning {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .timer-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%; background: #10b981;
+        }
+        .session-timer.warning .timer-dot { background: #f59e0b; }
 
         .bem-vindo { font-size: 12.5px; color: rgba(255,255,255,0.55); }
 
@@ -162,16 +184,17 @@
         .menu-item.active .mi-icon { background: #bfdbfe; }
         body.dark-mode .menu-item.active .mi-icon { background: rgba(29,78,216,0.25); }
 
+        /* Item de menu admin (oculto por padrão) */
+        #menu-relatorios { display: none; }
+
         /* Quick access buttons */
         .sidebar-quick-links {
             padding: 6px 10px 16px;
             display: flex; flex-direction: column; gap: 7px;
         }
-
         .sidebar-link-btn {
             display: flex; align-items: center; gap: 9px;
-            padding: 10px 13px;
-            border-radius: 10px;
+            padding: 10px 13px; border-radius: 10px;
             text-decoration: none; font-size: 12.5px; font-weight: 600;
             color: #fff; transition: opacity 0.2s, transform 0.15s;
             cursor: pointer; border: none;
@@ -208,82 +231,56 @@
 
         /* ── HOME ── */
         #page-home {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: flex; flex-direction: column; align-items: center;
             padding: 52px 24px 40px;
             min-height: calc(100vh - 60px);
         }
 
-        .home-header {
-            text-align: center;
-            margin-bottom: 48px;
-            max-width: 600px;
-        }
+        .home-header { text-align: center; margin-bottom: 48px; max-width: 600px; }
         .home-header .eyebrow {
             display: inline-flex; align-items: center; gap: 6px;
             background: linear-gradient(135deg, rgba(29,78,216,0.1), rgba(14,165,233,0.1));
             border: 1px solid rgba(29,78,216,0.2);
             color: var(--accent); padding: 5px 14px;
             border-radius: 20px; font-size: 11px; font-weight: 700;
-            letter-spacing: 1px; text-transform: uppercase;
-            margin-bottom: 18px;
+            letter-spacing: 1px; text-transform: uppercase; margin-bottom: 18px;
         }
         body.dark-mode .home-header .eyebrow {
-            background: rgba(29,78,216,0.15); border-color: rgba(29,78,216,0.3);
-            color: #60a5fa;
+            background: rgba(29,78,216,0.15); border-color: rgba(29,78,216,0.3); color: #60a5fa;
         }
         .home-header h1 {
             font-family: 'Sora', sans-serif;
             font-size: 30px; font-weight: 800;
-            color: var(--text); line-height: 1.25;
-            margin-bottom: 12px;
+            color: var(--text); line-height: 1.25; margin-bottom: 12px;
         }
-        .home-header p {
-            font-size: 15px; color: var(--muted); line-height: 1.6;
-        }
+        .home-header p { font-size: 15px; color: var(--muted); line-height: 1.6; }
 
-        /* Cards grid */
         .cards-home {
-            display: flex;
-            gap: 28px;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: flex; gap: 28px; flex-wrap: wrap; justify-content: center;
         }
 
         .dash-card {
             background: var(--card-bg);
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            width: 320px;
-            cursor: pointer;
+            border-radius: 20px; border: 1px solid var(--border);
+            box-shadow: var(--shadow); overflow: hidden;
+            width: 320px; cursor: pointer; position: relative;
             transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s;
-            position: relative;
         }
         .dash-card:hover {
             transform: translateY(-6px) scale(1.01);
             box-shadow: var(--shadow-hover);
         }
 
-        .card-header-band {
-            height: 6px;
-            width: 100%;
-        }
+        .card-header-band { height: 6px; width: 100%; }
         .band-blue { background: linear-gradient(90deg, #1d4ed8, #0ea5e9); }
         .band-teal { background: linear-gradient(90deg, #10b981, #0ea5e9); }
 
-        .card-body {
-            padding: 26px 24px 20px;
-        }
+        .card-body { padding: 26px 24px 20px; }
 
         .card-icon-wrap {
-            width: 52px; height: 52px;
-            border-radius: 14px;
+            width: 52px; height: 52px; border-radius: 14px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 24px;
-            margin-bottom: 16px;
+            font-size: 24px; margin-bottom: 16px;
         }
         .icon-blue { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
         .icon-teal { background: linear-gradient(135deg, #d1fae5, #a7f3d0); }
@@ -292,8 +289,7 @@
 
         .card-label {
             font-size: 10px; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 1.2px;
-            margin-bottom: 6px;
+            text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 6px;
         }
         .label-blue { color: var(--accent); }
         .label-teal { color: var(--green); }
@@ -305,18 +301,13 @@
             font-size: 19px; font-weight: 700;
             color: var(--text); margin-bottom: 8px; line-height: 1.25;
         }
-
         .card-desc {
-            font-size: 12.5px; color: var(--muted); line-height: 1.6;
-            margin-bottom: 20px;
+            font-size: 12.5px; color: var(--muted); line-height: 1.6; margin-bottom: 20px;
         }
-
         .card-cta {
             display: flex; align-items: center; justify-content: space-between;
-            padding: 11px 16px;
-            border-radius: 10px;
-            font-size: 13px; font-weight: 600; color: #fff;
-            transition: opacity 0.2s;
+            padding: 11px 16px; border-radius: 10px;
+            font-size: 13px; font-weight: 600; color: #fff; transition: opacity 0.2s;
         }
         .card-cta:hover { opacity: 0.9; }
         .cta-blue { background: linear-gradient(135deg, #1d4ed8, #0ea5e9); }
@@ -325,36 +316,28 @@
 
         /* ── DASHBOARD VIEW ── */
         #page-dashboard {
-            display: none;
-            flex-direction: column;
+            display: none; flex-direction: column;
             height: calc(100vh - 60px);
         }
         #page-dashboard.active { display: flex; }
 
         .dash-topbar {
             display: flex; align-items: center; gap: 12px;
-            padding: 0 20px;
-            height: 54px;
-            background: var(--card-bg);
-            border-bottom: 1px solid var(--border);
-            flex-shrink: 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            padding: 0 20px; height: 54px;
+            background: var(--card-bg); border-bottom: 1px solid var(--border);
+            flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
-
         .btn-back {
             display: flex; align-items: center; gap: 7px;
-            padding: 7px 16px;
-            background: var(--accent);
+            padding: 7px 16px; background: var(--accent);
             color: #fff; border: none; border-radius: 9px;
             font-family: 'DM Sans', sans-serif;
             font-size: 13px; font-weight: 600; cursor: pointer;
             transition: background 0.2s, transform 0.15s;
         }
         .btn-back:hover { background: #1a42c0; transform: translateX(-2px); }
-
         .dash-topbar-title {
-            font-family: 'Sora', sans-serif;
-            font-size: 14px; font-weight: 700; color: var(--text);
+            font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; color: var(--text);
         }
         .dash-topbar-badge {
             font-size: 10.5px; font-weight: 700; padding: 3px 10px;
@@ -365,14 +348,86 @@
         body.dark-mode .badge-blue { background: rgba(29,78,216,0.2); color: #60a5fa; }
         body.dark-mode .badge-teal { background: rgba(16,185,129,0.2); color: #34d399; }
 
-        .dash-iframe {
-            flex: 1; border: none; background: var(--bg);
-        }
+        .dash-iframe { flex: 1; border: none; background: var(--bg); }
 
-        /* ── OTHER PAGES ── */
+        /* ── PÁGINA RELATÓRIOS ── */
+        #page-relatorios {
+            display: none; flex-direction: column;
+            padding: 28px 28px 40px;
+            min-height: calc(100vh - 60px);
+        }
+        #page-relatorios.active { display: flex; }
+
+        .relatorios-header { margin-bottom: 24px; }
+        .relatorios-header h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 6px;
+        }
+        .relatorios-header p { font-size: 13px; color: var(--muted); }
+
+        .relatorios-filtros {
+            display: flex; gap: 10px; margin-bottom: 20px;
+            flex-wrap: wrap; align-items: center;
+        }
+        .filtro-input {
+            padding: 8px 13px; border-radius: 9px;
+            border: 1px solid var(--border);
+            background: var(--card-bg); color: var(--text);
+            font-size: 13px; font-family: 'DM Sans', sans-serif;
+            outline: none; transition: border-color 0.2s;
+        }
+        .filtro-input:focus { border-color: var(--accent); }
+
+        .btn-refresh {
+            display: flex; align-items: center; gap: 6px;
+            padding: 8px 16px; background: var(--accent);
+            color: #fff; border: none; border-radius: 9px;
+            font-size: 13px; font-weight: 600; cursor: pointer;
+            font-family: 'DM Sans', sans-serif; transition: opacity 0.2s;
+        }
+        .btn-refresh:hover { opacity: 0.85; }
+
+        .table-wrap {
+            background: var(--card-bg); border-radius: 14px;
+            border: 1px solid var(--border); box-shadow: var(--shadow); overflow: auto;
+        }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        thead tr {
+            background: linear-gradient(135deg, rgba(29,78,216,0.08), rgba(14,165,233,0.06));
+            border-bottom: 1px solid var(--border);
+        }
+        thead th {
+            padding: 13px 16px; text-align: left;
+            font-size: 11px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1px;
+            color: var(--muted); white-space: nowrap;
+        }
+        tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+        tbody tr:last-child { border-bottom: none; }
+        tbody tr:hover { background: var(--sidebar-hover); }
+        tbody td { padding: 11px 16px; color: var(--text); vertical-align: middle; }
+
+        .badge-acao {
+            display: inline-flex; padding: 3px 10px;
+            border-radius: 20px; font-size: 11px; font-weight: 700;
+        }
+        .badge-login    { background: rgba(16,185,129,0.12); color: #059669; }
+        .badge-logout   { background: rgba(239,68,68,0.1);   color: #dc2626; }
+        .badge-dashboard { background: rgba(29,78,216,0.1);  color: #1d4ed8; }
+
+        .loading-table { text-align: center; padding: 40px; color: var(--muted); font-size: 13px; }
+
+        .count-badge {
+            background: #dbeafe; color: #1d4ed8;
+            font-size: 11px; font-weight: 700;
+            padding: 3px 10px; border-radius: 20px; margin-left: 8px;
+        }
+        body.dark-mode .count-badge { background: rgba(29,78,216,0.2); color: #60a5fa; }
+
+        /* ── OTHER STATIC PAGES ── */
         .static-page {
-            display: none;
-            flex-direction: column; align-items: center; justify-content: center;
+            display: none; flex-direction: column;
+            align-items: center; justify-content: center;
             height: calc(100vh - 60px); text-align: center; padding: 40px;
         }
         .static-page.active { display: flex; }
@@ -395,8 +450,7 @@
         .loading.active { display: block; }
         .loading-spinner {
             width: 38px; height: 38px;
-            border: 3px solid var(--border);
-            border-top-color: var(--accent);
+            border: 3px solid var(--border); border-top-color: var(--accent);
             border-radius: 50%;
             animation: spin 0.7s linear infinite;
             margin: 0 auto 14px;
@@ -404,12 +458,53 @@
         .loading p { font-size: 13px; color: var(--muted); font-weight: 500; }
         @keyframes spin { to { transform: rotate(360deg); } }
 
+        /* ── MODAL TIMEOUT ── */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.65); z-index: 2000;
+            backdrop-filter: blur(6px);
+            align-items: center; justify-content: center;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-box {
+            background: var(--card-bg); border: 1px solid var(--border);
+            border-radius: 20px; padding: 36px 40px;
+            text-align: center; max-width: 380px; width: 90%;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+        }
+        .modal-icon { font-size: 3rem; margin-bottom: 16px; }
+        .modal-box h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--text);
+        }
+        .modal-box p { font-size: 13.5px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
+        .modal-countdown {
+            font-size: 32px; font-weight: 800;
+            font-family: 'Sora', sans-serif; color: var(--accent); margin-bottom: 20px;
+        }
+        .modal-btn {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 11px 24px; border-radius: 10px;
+            font-size: 13.5px; font-weight: 600;
+            cursor: pointer; border: none;
+            font-family: 'DM Sans', sans-serif; transition: opacity 0.2s;
+        }
+        .modal-btn:hover { opacity: 0.85; }
+        .btn-continuar { background: linear-gradient(135deg,#1d4ed8,#0ea5e9); color: #fff; margin-right: 8px; }
+        .btn-sair-modal {
+            background: rgba(239,68,68,0.12); color: #ef4444;
+            border: 1px solid rgba(239,68,68,0.25) !important;
+        }
+
         @media (max-width: 768px) {
             .bem-vindo { display: none; }
+            .session-timer span:last-child { display: none; }
             .main-content.shifted { margin-left: 0; }
             .cards-home { flex-direction: column; align-items: center; }
             .dash-card { width: 100%; max-width: 360px; }
             .home-header h1 { font-size: 22px; }
+            #page-relatorios { padding: 16px; }
+            .relatorios-filtros { flex-direction: column; align-items: stretch; }
         }
     </style>
 </head>
@@ -425,6 +520,13 @@
         <span class="logo-text">MS CONNECT</span>
     </div>
     <div class="header-right">
+
+        <!-- TIMER DE INATIVIDADE -->
+        <div class="session-timer" id="session-timer">
+            <div class="timer-dot"></div>
+            <span id="timer-text">Sessão ativa</span>
+        </div>
+
         <span class="bem-vindo">
             {% if nome_usuario %}Olá, {{ nome_usuario }}!{% else %}Olá, visitante!{% endif %}
         </span>
@@ -450,10 +552,13 @@
     </a>
 
     <div class="menu-section-title">Outros</div>
-    <a class="menu-item" onclick="loadStaticPage(event, 'relatorios')">
+
+    <!-- Relatórios: visível somente para admin (carteira + ligacoes) -->
+    <a class="menu-item" id="menu-relatorios" onclick="loadRelatorios(event)">
         <div class="mi-icon">📋</div>
         <span>Relatórios</span>
     </a>
+
     <a class="menu-item" onclick="loadStaticPage(event, 'configuracoes')">
         <div class="mi-icon">⚙️</div>
         <span>Configurações</span>
@@ -538,12 +643,41 @@
         <iframe id="dash-iframe" class="dash-iframe" src="" allowfullscreen></iframe>
     </div>
 
-    <!-- STATIC PAGES -->
-    <div class="static-page" id="page-relatorios">
-        <div class="big-icon">📋</div>
-        <h1>Relatórios Gerenciais</h1>
-        <p>Em breve você terá acesso a relatórios customizados e exportação de dados.</p>
+    <!-- RELATÓRIOS (ADMIN) -->
+    <div id="page-relatorios">
+        <div class="relatorios-header">
+            <h2>📋 Relatórios de Acesso <span class="count-badge" id="count-badge">0</span></h2>
+            <p>Histórico completo de logins, acessos a dashboards e logouts do sistema.</p>
+        </div>
+
+        <div class="relatorios-filtros">
+            <input class="filtro-input" id="filtro-usuario" type="text"
+                   placeholder="🔍 Filtrar por usuário ou e-mail..." oninput="filtrarTabela()">
+            <input class="filtro-input" id="filtro-acao" type="text"
+                   placeholder="Filtrar por ação..." oninput="filtrarTabela()">
+            <button class="btn-refresh" onclick="carregarRelatorios()">🔄 Atualizar</button>
+        </div>
+
+        <div class="table-wrap">
+            <table id="tabela-auditoria">
+                <thead>
+                    <tr>
+                        <th>Usuário</th>
+                        <th>E-mail</th>
+                        <th>Ação</th>
+                        <th>Dashboard</th>
+                        <th>IP</th>
+                        <th>Data / Hora</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-auditoria">
+                    <tr><td colspan="6" class="loading-table">Carregando dados...</td></tr>
+                </tbody>
+            </table>
+        </div>
     </div>
+
+    <!-- CONFIGURAÇÕES -->
     <div class="static-page" id="page-configuracoes">
         <div class="big-icon">⚙️</div>
         <h1>Preferências</h1>
@@ -558,7 +692,29 @@
     <p>Carregando dashboard...</p>
 </div>
 
+<!-- MODAL TIMEOUT -->
+<div class="modal-overlay" id="modal-timeout">
+    <div class="modal-box">
+        <div class="modal-icon">⏰</div>
+        <h3>Sessão prestes a expirar</h3>
+        <p>Por inatividade, sua sessão será encerrada em:</p>
+        <div class="modal-countdown" id="modal-countdown">30</div>
+        <div>
+            <button class="modal-btn btn-continuar" onclick="continuarSessao()">✅ Continuar logado</button>
+            <a href="/logout" class="modal-btn btn-sair-modal">↩ Sair agora</a>
+        </div>
+    </div>
+</div>
+
 <script>
+    // =====================================================
+    // CONFIGURAÇÃO
+    // =====================================================
+
+    const TIMEOUT_TOTAL  = 120;  // 2 minutos em segundos
+    const AVISO_ANTES    = 30;   // Mostra modal 30s antes de expirar
+    const PING_INTERVALO = 30;   // Envia ping ao servidor a cada 30s
+
     const URLS = {
         carteira: 'https://app.powerbi.com/view?r=eyJrIjoiYTU5MmIyMDYtMjhkOC00YmU0LTlmZGItY2Y3YTdmMzdjMTVmIiwidCI6Ijg4N2IwZDk1LTY4ODktNGQzZi1hODY0LTg1ZmFlODc2OWQ0OSJ9',
         ligacoes: 'https://app.powerbi.com/view?r=eyJrIjoiMTgzMWVkYzEtNzUwMi00YmEwLTgyZmYtMzMwMzQzZTRiZDlhIiwidCI6Ijg4N2IwZDk1LTY4ODktNGQzZi1hODY0LTg1ZmFlODc2OWQ0OSJ9'
@@ -569,7 +725,10 @@
         ligacoes: { title: 'Ligações 3C',             badgeClass: 'badge-teal', badgeText: '📞 3C Plus'  }
     };
 
-    /* ── THEME ── */
+    // =====================================================
+    // THEME
+    // =====================================================
+
     const themeBtn = document.getElementById('theme-toggle');
     themeBtn.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
@@ -582,11 +741,14 @@
         themeBtn.textContent = '☀️';
     }
 
-    /* ── SIDEBAR ── */
+    // =====================================================
+    // SIDEBAR
+    // =====================================================
+
     function toggleMenu() {
-        const sidebar  = document.getElementById('sidebar');
-        const overlay  = document.getElementById('overlay');
-        const mc       = document.getElementById('mainContent');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const mc      = document.getElementById('mainContent');
         sidebar.classList.toggle('active');
         overlay.classList.toggle('active');
         if (window.innerWidth > 768) mc.classList.toggle('shifted');
@@ -599,69 +761,89 @@
         }
     }
 
-    /* ── HIDE ALL PAGES ── */
+    // =====================================================
+    // HIDE ALL
+    // =====================================================
+
     function hideAll() {
         document.getElementById('page-home').style.display = 'none';
         const pDash = document.getElementById('page-dashboard');
         pDash.classList.remove('active');
         pDash.style.display = 'none';
+        document.getElementById('page-relatorios').classList.remove('active');
         document.querySelectorAll('.static-page').forEach(p => p.classList.remove('active'));
         document.getElementById('loading').classList.remove('active');
     }
 
-    /* ── HOME ── */
+    // =====================================================
+    // HOME
+    // =====================================================
+
     function goHome(event) {
         if (event) { event.preventDefault(); event.stopPropagation(); }
         hideAll();
         document.getElementById('page-home').style.display = 'flex';
-        // Reset iframe src so it reloads fresh next time
         document.getElementById('dash-iframe').src = '';
-        // Menu highlight
         document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
         document.querySelector('.menu-item[onclick*="goHome"]').classList.add('active');
         closeSidebarMobile();
     }
 
-    /* ── OPEN DASHBOARD (from card click) ── */
+    // =====================================================
+    // OPEN DASHBOARD
+    // =====================================================
+
     async function openDashboard(key) {
-    try {
-        const response = await fetch(`/validar-dashboard/${key}`);
-        const data = await response.json();
+        try {
+            const response = await fetch(`/validar-dashboard/${key}`);
 
-        if (!data.permitido) {
-            alert(data.mensagem);
-            return;
+            // Sessão expirou no servidor
+            if (response.status === 401) {
+                const data = await response.json();
+                if (data.redirect) window.location.href = data.redirect;
+                return;
+            }
+
+            const data = await response.json();
+
+            if (!data.permitido) {
+                alert(data.mensagem);
+                return;
+            }
+
+            hideAll();
+            document.getElementById('loading').classList.add('active');
+
+            const pDash = document.getElementById('page-dashboard');
+            pDash.style.display = 'flex';
+            pDash.classList.add('active');
+
+            const meta  = META[key];
+            document.getElementById('dash-title').textContent = meta.title;
+
+            const badge = document.getElementById('dash-badge');
+            badge.textContent = meta.badgeText;
+            badge.className   = 'dash-topbar-badge ' + meta.badgeClass;
+
+            document.getElementById('dash-iframe').src = URLS[key];
+
+            // Conta como atividade
+            registrarAtividade();
+
+            setTimeout(() => {
+                document.getElementById('loading').classList.remove('active');
+            }, 3000);
+
+        } catch (error) {
+            alert("Erro ao validar acesso.");
+            console.error(error);
         }
-
-        hideAll();
-
-        document.getElementById('loading').classList.add('active');
-
-        const pDash = document.getElementById('page-dashboard');
-        pDash.style.display = 'flex';
-        pDash.classList.add('active');
-
-        const meta = META[key];
-        document.getElementById('dash-title').textContent = meta.title;
-
-        const badge = document.getElementById('dash-badge');
-        badge.textContent = meta.badgeText;
-        badge.className = 'dash-topbar-badge ' + meta.badgeClass;
-
-        const iframe = document.getElementById('dash-iframe');
-        iframe.src = URLS[key];
-
-        setTimeout(() => {
-            document.getElementById('loading').classList.remove('active');
-        }, 3000);
-
-    } catch (error) {
-        alert("Erro ao validar acesso.");
-        console.error(error);
     }
-}
 
-    /* ── STATIC PAGES ── */
+    // =====================================================
+    // STATIC PAGES
+    // =====================================================
+
     function loadStaticPage(event, pageId) {
         if (event) { event.preventDefault(); event.stopPropagation(); }
         hideAll();
@@ -671,6 +853,192 @@
         if (page) page.classList.add('active');
         closeSidebarMobile();
     }
+
+    // =====================================================
+    // RELATÓRIOS (ADMIN)
+    // =====================================================
+
+    let todosRegistros = [];
+
+    async function loadRelatorios(event) {
+        if (event) { event.preventDefault(); event.stopPropagation(); }
+        hideAll();
+        document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+        if (event && event.currentTarget) event.currentTarget.classList.add('active');
+
+        document.getElementById('page-relatorios').classList.add('active');
+        closeSidebarMobile();
+        await carregarRelatorios();
+    }
+
+    async function carregarRelatorios() {
+        const tbody = document.getElementById('tbody-auditoria');
+        tbody.innerHTML = '<tr><td colspan="6" class="loading-table">⏳ Carregando dados...</td></tr>';
+
+        try {
+            const res = await fetch('/relatorios-dados');
+
+            if (res.status === 401 || res.status === 403) {
+                tbody.innerHTML = '<tr><td colspan="6" class="loading-table">🔒 Acesso negado.</td></tr>';
+                return;
+            }
+
+            todosRegistros = await res.json();
+            renderTabela(todosRegistros);
+
+        } catch (e) {
+            tbody.innerHTML = '<tr><td colspan="6" class="loading-table">❌ Erro ao carregar dados.</td></tr>';
+        }
+    }
+
+    function renderTabela(registros) {
+        const tbody = document.getElementById('tbody-auditoria');
+        document.getElementById('count-badge').textContent = registros.length;
+
+        if (registros.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" class="loading-table">Nenhum registro encontrado.</td></tr>';
+            return;
+        }
+
+        const acaoBadge = {
+            'login':            '<span class="badge-acao badge-login">🟢 Login</span>',
+            'logout':           '<span class="badge-acao badge-logout">🔴 Logout</span>',
+            'acesso_dashboard': '<span class="badge-acao badge-dashboard">🔵 Dashboard</span>'
+        };
+
+        tbody.innerHTML = registros.map(r => `
+            <tr>
+                <td><strong>${r.nome_usuario}</strong></td>
+                <td>${r.email}</td>
+                <td>${acaoBadge[r.acao] || r.acao}</td>
+                <td>${r.dashboard}</td>
+                <td>${r.ip_address}</td>
+                <td>${r.data_hora}</td>
+            </tr>
+        `).join('');
+    }
+
+    function filtrarTabela() {
+        const filtroUsuario = document.getElementById('filtro-usuario').value.toLowerCase();
+        const filtroAcao    = document.getElementById('filtro-acao').value.toLowerCase();
+
+        const filtrados = todosRegistros.filter(r => {
+            const matchUsuario = r.nome_usuario.toLowerCase().includes(filtroUsuario)
+                              || r.email.toLowerCase().includes(filtroUsuario);
+            const matchAcao    = r.acao.toLowerCase().includes(filtroAcao)
+                              || r.dashboard.toLowerCase().includes(filtroAcao);
+            return matchUsuario && matchAcao;
+        });
+
+        renderTabela(filtrados);
+    }
+
+    // =====================================================
+    // VERIFICAR PERMISSÃO ADMIN AO CARREGAR
+    // =====================================================
+
+    async function verificarAdmin() {
+        try {
+            const res  = await fetch('/verificar-admin');
+            const data = await res.json();
+            if (data.is_admin) {
+                document.getElementById('menu-relatorios').style.display = 'flex';
+            }
+        } catch (e) {
+            console.error('Erro ao verificar admin:', e);
+        }
+    }
+
+    verificarAdmin();
+
+    // =====================================================
+    // CONTROLE DE SESSÃO / TIMEOUT DE INATIVIDADE
+    // =====================================================
+
+    let tempoInativo = 0;
+    let modalAtivo   = false;
+
+    const timerEl    = document.getElementById('session-timer');
+    const timerText  = document.getElementById('timer-text');
+    const modalEl    = document.getElementById('modal-timeout');
+    const countdownEl = document.getElementById('modal-countdown');
+
+    function registrarAtividade() {
+        tempoInativo = 0;
+        if (modalAtivo) fecharModal();
+        atualizarTimer();
+    }
+
+    // Escuta qualquer interação do usuário
+    ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'].forEach(evt => {
+        document.addEventListener(evt, registrarAtividade, { passive: true });
+    });
+
+    // Tick a cada segundo
+    setInterval(() => {
+        tempoInativo++;
+        atualizarTimer();
+
+        const restante = TIMEOUT_TOTAL - tempoInativo;
+
+        if (restante <= AVISO_ANTES && !modalAtivo) {
+            abrirModal();
+        }
+
+        if (restante <= 0) {
+            window.location.href = '/logout';
+        }
+
+        if (modalAtivo) {
+            countdownEl.textContent = Math.max(0, restante);
+        }
+
+    }, 1000);
+
+    // Ping ao servidor enquanto o usuário está ativo
+    setInterval(async () => {
+        if (tempoInativo < PING_INTERVALO) {
+            try { await fetch('/ping-atividade', { method: 'POST' }); } catch (e) {}
+        }
+    }, PING_INTERVALO * 1000);
+
+    function atualizarTimer() {
+        const restante = TIMEOUT_TOTAL - tempoInativo;
+        const min = Math.floor(restante / 60);
+        const seg = restante % 60;
+        const str = `${String(min).padStart(2,'0')}:${String(seg).padStart(2,'0')}`;
+
+        if (restante > AVISO_ANTES) {
+            timerEl.classList.remove('warning');
+            timerText.textContent = str;
+        } else {
+            timerEl.classList.add('warning');
+            timerText.textContent = `⚠️ ${str}`;
+        }
+    }
+
+    function abrirModal()  { modalAtivo = true;  modalEl.classList.add('active'); }
+    function fecharModal() { modalAtivo = false; modalEl.classList.remove('active'); }
+
+    function continuarSessao() {
+        registrarAtividade();
+        fetch('/ping-atividade', { method: 'POST' }).catch(() => {});
+    }
+
+    // =====================================================
+    // VERIFICAÇÃO PERIÓDICA DA SESSÃO NO SERVIDOR
+    // Garante redirecionamento mesmo que o servidor
+    // invalide a sessão por outro motivo
+    // =====================================================
+
+    setInterval(async () => {
+        try {
+            const res  = await fetch('/verificar-sessao');
+            const data = await res.json();
+            if (!data.logado) window.location.href = '/';
+        } catch (e) {}
+    }, 15000);
+
 </script>
 </body>
 </html>
